@@ -1,0 +1,243 @@
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root{
+    --primary-color:black;
+    --secondary-color:#E6E6E6;
+}
+
+/* Color theme */
+.darktheme{
+    --primary-color:#E6E6E6;
+    --secondary-color:black;
+}
+.neon-orange {
+  color: #ffb347;
+  text-shadow: 0 0 5px #ffb347;
+}
+
+html, body {
+    margin: 0;
+    padding: 0%;
+    background-color: var(--secondary-color); /* Set the entire page background to black */
+    color: var(--primary-color);
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    height: 100%;
+}
+
+/* Navbar */
+.navbar {
+background-color: var(--secondary-color);
+color: var(--primary-color);
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1rem 2rem;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 10;
+backdrop-filter: blur(100%);
+}
+
+    /* Container for navigation links and social icons */
+    .nav-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    }
+
+    /* Navigation links */
+    .nav-links {
+    margin-right: auto;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    }
+
+    /* Styling for each link */
+    .nav-links li a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    }
+
+    /* Social icons */
+    .social-icons {
+    display: flex;
+    gap: 10px;
+    padding: 2px; /* Add some padding around the icon */
+    background-color: rgba(255, 255, 255, 0.3); /* Light background color */
+    border-radius: 10px; /* Make the corners rounded */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+    }
+
+    .social-icons:hover {
+    transform: scale(1.01); /* Slightly scale up the icon on hover */
+    }
+
+    /* Styling for icons */
+    .icon {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    }
+
+    .icon:hover{
+    transform: scale(1.1); /* Slightly scale up the icon on hover */   
+    }
+
+/* Content section styling */
+#main-content {
+    min-height: 100vh;
+    padding-top: 70px; /* Offset content to avoid overlap with navbar */
+    transition: filter 0.3s ease; /* Smooth blur effect */
+}
+
+/* Blur effect */
+.blurred {
+    filter: blur(5px); /* Apply blur when class is active */
+}
+
+/* Home Section */
+.home {
+    height: 100vh;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+    .home h2 {
+        font-size: 3rem;
+    }
+
+    .home p {
+        margin-top: 10px;
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    /* Waving Hand  */
+    @keyframes waving-hand{
+        0%{
+            transform: rotate(0deg);
+        }
+        10%{
+            transform: rotate(14deg);
+        }
+        20%{
+            transform: rotate(-8deg);
+        }
+        30%{
+            transform: rotate(14deg);
+        }
+        40%{
+            transform: rotate(-4deg);
+        }
+        50%{
+            transform: rotate(10deg);
+        }
+        60%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(0deg);
+        }
+    }
+    .emoji{
+        animation: waving-hand 2.5s infinite;
+        transform-origin: 70% 70%;
+        display: inline-block;
+    }
+
+    /* Image Container with Neon Effect */
+    .image-container {
+        position: relative;
+        display: inline-block;
+        padding: 5px; /* Spacing between the image and the glow */
+        border-radius: 5%; /* Matching the image border */
+        background-color: #0d0d0d; /* Dark background to enhance neon effect */
+        box-shadow: 0 0 10px #ffb347, 0 0 15px #ffb347; /* Neon glow effect */
+        transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    }
+
+    /* Image Styling - Responsive */
+    .personal-pic {
+        width: 99%;  /* Width as a percentage of its container */
+        max-width: 350px; /* Limit maximum width */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 5%; /* Consistent rounded borders */
+        object-fit: cover; /* Ensure the image fits nicely */
+    }
+
+    /* Hover Effect */
+    .image-container:hover {
+        cursor: auto;
+        transform: scale(1.05); /* Slight zoom-in effect */
+        box-shadow: 0 0 10px #ffb347, 0 0 15px #ffb347; /* Neon glow effect */
+    }
+
+
+/* About Section */
+.about {
+    padding: 60px 20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Portfolio Section */
+.portfolio {
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+    .gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        width: 300px;
+        background-color: var(--secondary-color);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+/* Footer */
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+    padding: 10px;
+}
