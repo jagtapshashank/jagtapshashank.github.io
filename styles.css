@@ -17,6 +17,7 @@
     --primary-color:#E6E6E6;
     --secondary-color:black;
     --neon-orange: #ffb347;
+    --conditional-color: rgba(255, 255, 255, 0.4);
 }
 .neon-orange {
   color: var(--neon-orange);
@@ -32,27 +33,45 @@ html, body {
     height: 100%;
 }
 
+.main-container{
+    max-width: 1200px; /* Set your desired maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Optional: Add some padding inside the container */
+}
+
+/* Line */
+hr {
+    border: none; /* Remove default border */
+    height: 1px; /* Set the height of the line */
+    background-color: var(--conditional-color); /* Set the desired color */
+    margin: 20px 0; /* Add some vertical spacing around the line */
+}
+
+
 /* Navbar */
 .navbar {
+position: fixed;
 background-color: var(--secondary-color);
 color: var(--primary-color);
 display: flex;
 align-items: center;
 justify-content: space-between;
 padding: 1rem 2rem;
-position: fixed;
 width: 100%;
 top: 0;
+left: 0;
 z-index: 10;
 backdrop-filter: blur(100%);
+transition: transform 0.3s ease; /* Smooth transition for moving */
 }
 
-    /* Container for navigation links and social icons */
-    .nav-content {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    }
+#sidebar-active{
+    display: none;
+}
+
+.open-sidebar-button, .close-sidebar-button{
+    display: none;
+}
 
     /* Navigation links */
     .nav-links {
@@ -62,6 +81,14 @@ backdrop-filter: blur(100%);
     gap: 20px;
     }
 
+    /* Container for navigation links and social icons */
+    .nav-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-direction: row;
+    }
+
     /* Styling for each link */
     .nav-links li a {
     color: var(--primary-color);
@@ -69,12 +96,63 @@ backdrop-filter: blur(100%);
     font-size: 1.1rem;
     }
 
+    .nav-links li:hover{
+    transform: scale(1.05);
+    }
+
+    /* Active link styling */
+    .nav-links a.active {
+    border-bottom: 2px solid var(--neon-orange);
+    font-weight: bold;
+    }
+
+    @media(max-width:415px){
+    .nav-links{
+        /* display: none; */
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 10;
+        width: 290px;
+        height: 100%;
+        background-color: var(--secondary-color);
+        box-shadow: 10px 0 15px rgba(255, 255, 255, 0.3);
+        transition: 0.75s ease-out;
+    }
+    nav a{
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-start;
+    }
+
+    .open-sidebar-button, .close-sidebar-button{
+        display: block;
+    }
+
+    #sidebar-active:checked ~ .nav-links{
+        /* display: flex; */
+        left: 0;
+    }
+    #sidebar-active:checked ~ #overlay{
+        height: 100%;
+        width:100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+    }
+
     /* Social icons */
     .social-icons {
     display: flex;
     gap: 10px;
     padding: 2px; /* Add some padding around the icon */
-    background-color: rgba(255, 255, 255, 0.3); /* Light background color */
+    background-color: var(--conditional-color); /* Light background color */
     border-radius: 10px; /* Make the corners rounded */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
     }
@@ -184,6 +262,7 @@ backdrop-filter: blur(100%);
 
     /* Image Styling - Responsive */
     .personal-pic {
+        cursor: pointer;
         width: 99%;  /* Width as a percentage of its container */
         max-width: 350px; /* Limit maximum width */
         height: auto; /* Maintain aspect ratio */
@@ -230,8 +309,8 @@ backdrop-filter: blur(100%);
     text-align: center;
 }
 
-/* Portfolio Section */
-.portfolio {
+/* Project Section */
+.project {
     padding: 60px 20px;
     text-align: center;
     color: var(--primary-color);
@@ -258,6 +337,13 @@ backdrop-filter: blur(100%);
         height: auto;
         border-radius: 10px;
     }
+
+    /* Active link styling */
+    .nav-links a.active {
+        border-bottom: 2px solid var(--neon-orange);
+        font-weight: bold;
+    }
+
 
 /* Footer */
 .footer {
