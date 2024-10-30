@@ -17,7 +17,7 @@
     --primary-color:#E6E6E6;
     --secondary-color:black;
     --neon-orange: #ffb347;
-    --conditional-color: rgba(255, 255, 255, 0.3);
+    --conditional-color: rgba(255, 255, 255, 0.1);
 }
 .neon-orange {
   color: var(--neon-orange);
@@ -153,11 +153,47 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     padding: 2px; /* Add some padding around the icon */
     background-color: var(--conditional-color); /* Light background color */
     border-radius: 10px; /* Make the corners rounded */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
     }
 
     .social-icons:hover {
     transform: scale(1.01); /* Slightly scale up the icon on hover */
+    }
+
+    /* Image container to handle tooltips */
+    .social-icons-image {
+        position: relative;
+        display: inline-block;
+        margin: 2px;/* ----- */
+        cursor: pointer;
+    }
+
+    /* Tooltip styling */
+    .social-icons-image::after {
+        content: attr(data-name); /* Get content from data-name attribute */
+        /* content: "shashank"; */
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--conditional-color);
+        color: var(--primary-color);
+        padding: 5px 8px;
+        border-radius: 8px;
+        font-size: 0.6rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        white-space: nowrap;
+        pointer-events: none; /* Ensure tooltip doesn't block interactions */
+    }
+
+    /* Show tooltip on hover */
+    .social-icons-image:hover::after {
+        visibility: visible;
+        opacity: 1;
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange); /* Neon glow effect */
     }
 
     /* Styling for icons */
@@ -185,7 +221,6 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
 
 /* Home Section */
 .home {
-    height: 100vh;
     background: var(--secondary-color);
     color: var(--primary-color);
     display: flex;
@@ -194,6 +229,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     align-items: center;
     text-align: center;
     padding: 20px;
+    scroll-margin-top: 100px;
 }
 
     .home h2 {
@@ -256,13 +292,13 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
         padding: 5px; /* Spacing between the image and the glow */
         border-radius: 5%; /* Matching the image border */
         background-color: #0d0d0d; /* Dark background to enhance neon effect */
-        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange); /* Neon glow effect */
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
         transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
     }
 
     /* Image Styling - Responsive */
     .personal-pic {
-        cursor: pointer;
+        cursor: auto;
         width: 99%;  /* Width as a percentage of its container */
         max-width: 350px; /* Limit maximum width */
         height: auto; /* Maintain aspect ratio */
@@ -274,7 +310,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     .image-container:hover {
         cursor: auto;
         transform: scale(1.05); /* Slight zoom-in effect */
-        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange); /* Neon glow effect */
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 25px var(--neon-orange); /* Neon glow effect */
     }
 
     .btn-container {
@@ -316,7 +352,15 @@ max-width: 550px; /* Optional: limit width */
 margin-left: auto;
 margin-right: auto;
 color: var(--primary-color); /* Adjust text color to match theme */
+transition: transform 0.3s, box-shadow 0.3s;
+scroll-margin-top: 100px;
 }
+
+    .about:hover{
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 25px var(--neon-orange); /* Neon glow effect */
+        cursor: default;
+        transform: scale(1.03);
+    }
     
     /* Optional: Improve paragraph spacing */
     .info-box p {
@@ -330,6 +374,7 @@ color: var(--primary-color); /* Adjust text color to match theme */
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    scroll-margin-top: 100px;
 }
     /* Prevent line breaks within the span */
     .heading-content {
@@ -359,6 +404,7 @@ color: var(--primary-color); /* Adjust text color to match theme */
         border-radius: 15px;
         width: 250px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         text-align: center;
         transition: transform 0.3s, box-shadow 0.3s;
         cursor: pointer;
@@ -366,7 +412,8 @@ color: var(--primary-color); /* Adjust text color to match theme */
 
     .skill-box:hover {
         transform: scale(1.05);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); */
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
     }
 
     .skill-box:hover h3{
@@ -401,7 +448,7 @@ color: var(--primary-color); /* Adjust text color to match theme */
         bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.3);
         color: var(--primary-color);
         padding: 5px 8px;
         border-radius: 8px;
@@ -424,10 +471,115 @@ color: var(--primary-color); /* Adjust text color to match theme */
         padding: 5px;
     }
 
+/* Timeline Section Styling */
+.timeline {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: var(--primary-color);
+    position: relative;
+}
+  
+    /* Vertical timeline line */
+    .timeline-container {
+        position: relative;
+        /* padding-left: 60%; */
+        /* border-left: 3px solid var(--primary-color); Vertical line */
+    }
     
+    .timeline-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 30px 0;
+    }
+    
+    /* Styling for the left-side date */
+    .timeline-date {
+        text-align: right;
+        padding-right: 10px;
+        font-weight: bold;
+        color: var(--primary-color);
+        position: absolute;
+        right: 0; /* Keep it on the left */
+        top: 50%; /* Vertically align */
+        margin-right: 60%;
+        transform: translateY(-50%);
+    }
+    
+    /* Styling for the dot */
+    .timeline-dot {
+        width: 15px;
+        height: 15px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%; /* Horizontally center */
+        transform: translateX(-50%); /* Adjust for dot width */
+    }
+    
+    /* Content on the right side */
+    .timeline-content {
+        flex: 1;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        text-align: left;
+        margin-left: 60%; /* Space from the dot */
+    }
 
+    /* Current job */
+    .timeline-date-current {
+        text-align: right;
+        padding-right: 10px;
+        font-weight: bold;
+        position: absolute;
+        right: 0; /* Keep it on the left */
+        top: 50%; /* Vertically align */
+        margin-right: 60%;
+        transform: translateY(-50%);
+        color: var(--neon-orange);
+        text-shadow: 0 0 5px var(--neon-orange);
+        /* box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange); */
+    }
+    
+    /* Styling for the dot */
+    .timeline-dot-current {
+        width: 15px;
+        height: 15px;
+        background-color: var(--neon-orange);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%; /* Horizontally center */
+        transform: translateX(-50%); /* Adjust for dot width */
+        text-shadow: 0 0 5px var(--neon-orange);
+        /* transform: scale(1.05); */
+        /* box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange); */
+    }
+    
+    /* Content on the right side */
+    .timeline-content-current {
+        flex: 1;
+        padding: 10px 20px;
+        color: var(--neon-orange);
+        text-shadow: 0 0 5px var(--neon-orange);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        text-align: left;
+        margin-left: 60%; /* Space from the dot */
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+    }
+    
   
 
+  
 /* Project Section */
 .project {
     padding: 60px 20px;
