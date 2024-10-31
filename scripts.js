@@ -81,7 +81,7 @@ function observeSections() {
 
   const observerOptions = {
     root: null, // Use the viewport as the root
-    threshold: 0.6 // Trigger when 60% of the section is in view
+    threshold: 0.2 // Trigger when 60% of the section is in view
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -89,11 +89,57 @@ function observeSections() {
       const link = document.querySelector(`a[href="#${entry.target.id}"]`);
 
       if (entry.isIntersecting) {
-        navLinks.forEach(link => link.classList.remove('active'));
-        link.classList.add('active');
+        if (entry.target.id === 'about') {
+          // If About section is in view, keep 'Home' underlined
+          homeLink.classList.add('active');
+        }else{
+          navLinks.forEach(link => link.classList.remove('active'));
+          link.classList.add('active');
+        }
       }
     });
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
 }
+
+// Function to update the text of timeline content based on screen size
+function updateTimelineContent() {
+  const allH3 = document.querySelectorAll(
+      '.timeline-content h3, .timeline-content-current h3'
+  );
+  const allP = document.querySelectorAll(
+      '.timeline-content a, .timeline-content-current a'
+  );
+  const timelineDates = document.querySelectorAll(
+      '.timeline-date, .timeline-date-current'
+  );
+
+  timelineDates.forEach(date => {
+    if (window.innerWidth <= 768) {
+        date.textContent = date.getAttribute('data-small');
+    } else {
+        date.textContent = date.getAttribute('data-full');
+    }
+  });
+
+  allH3.forEach(h3 => {
+      if (window.innerWidth <= 768) {
+          h3.textContent = h3.getAttribute('data-small');
+      } else {
+          h3.textContent = h3.getAttribute('data-full');
+      }
+  });
+
+  allP.forEach(p => {
+      if (window.innerWidth <= 768) {
+          p.textContent = p.getAttribute('data-small');
+      } else {
+          p.textContent = p.getAttribute('data-full');
+      }
+  });
+}
+
+// Run on window resize and page load
+window.addEventListener('resize', updateTimelineContent);
+document.addEventListener('DOMContentLoaded', updateTimelineContent);

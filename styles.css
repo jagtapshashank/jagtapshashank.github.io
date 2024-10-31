@@ -102,11 +102,13 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
 
     /* Active link styling */
     .nav-links a.active {
-    border-bottom: 2px solid var(--neon-orange);
-    font-weight: bold;
+    /* border-bottom: 2px solid var(--neon-orange); */
+    color: var(--neon-orange);
+    text-shadow: 0 0 15px var(--neon-orange);
+    /* font-weight: bold; */
     }
 
-    @media(max-width:415px){
+    @media(max-width:650px){
     .nav-links{
         /* display: none; */
         flex-direction: column;
@@ -115,7 +117,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
         top: 0;
         left: -100%;
         z-index: 10;
-        width: 290px;
+        width: 70%;
         height: 100%;
         background-color: var(--secondary-color);
         box-shadow: 10px 0 15px rgba(255, 255, 255, 0.3);
@@ -154,6 +156,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     background-color: var(--conditional-color); /* Light background color */
     border-radius: 10px; /* Make the corners rounded */
     border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
     }
 
@@ -345,7 +348,7 @@ background-color: rgba(255, 255, 255, 0.1); /* Light translucent background */
 border-radius: 15px; /* Rounded corners */
 padding: 20px; /* Space inside the box */
 border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 margin-top: 10px; /* Space between heading and box */
 line-height: 1.6; /* Improve readability */
 max-width: 550px; /* Optional: limit width */
@@ -355,6 +358,9 @@ color: var(--primary-color); /* Adjust text color to match theme */
 transition: transform 0.3s, box-shadow 0.3s;
 scroll-margin-top: 100px;
 }
+    .about h2{
+        text-shadow: 0 0 15px var(--neon-orange);
+    }
 
     .about:hover{
         box-shadow: 0 0 10px var(--neon-orange), 0 0 25px var(--neon-orange); /* Neon glow effect */
@@ -374,11 +380,12 @@ scroll-margin-top: 100px;
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    scroll-margin-top: 100px;
+    scroll-margin-top: 80px;
 }
     /* Prevent line breaks within the span */
     .heading-content {
         white-space: nowrap; 
+        text-shadow: 0 0 15px var(--neon-orange);
     }
 
     /* Heading styling */
@@ -473,113 +480,158 @@ scroll-margin-top: 100px;
 
 /* Timeline Section Styling */
 .timeline {
-    max-width: 800px;
+    padding: 2rem;
+    scroll-margin-top: 100px;
+    max-width: 66.66%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     color: var(--primary-color);
     position: relative;
+    cursor: default;
 }
-  
-    /* Vertical timeline line */
+
+    /* Prevent line breaks within the span */
+    .heading-content {
+        white-space: nowrap; 
+        text-shadow: 0 0 15px var(--neon-orange);
+    }
+
+    .timeline h2{
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* Vertical timeline container */
     .timeline-container {
         position: relative;
-        /* padding-left: 60%; */
-        /* border-left: 3px solid var(--primary-color); Vertical line */
+        left: 50%;
+        transform: translateX(-50%);
     }
-    
+
+    /* Each timeline item */
     .timeline-item {
         position: relative;
         display: flex;
         align-items: center;
-        margin: 30px 0;
+        margin: 0 0;
     }
-    
+
+    /* Connecting vertical line between dots */
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 50%; /* Center the line */
+        width: 3px;
+        background-color: gray;
+        height: 100%; /* Full height of the item */
+        transform: translateX(-50%);
+        z-index: -1; /* Send the line behind the dots */
+    }
+
+    /* Styling for the first and last dot's line */
+    .timeline-item:first-child::before {
+        top: 50%; /* Start the first line from the middle of the first dot */
+    }
+    .timeline-item:last-child::before {
+        bottom: 50%; /* End the last line at the middle of the last dot */
+    }
+
     /* Styling for the left-side date */
-    .timeline-date {
+    .timeline-date, .timeline-date-current {
         text-align: right;
         padding-right: 10px;
         font-weight: bold;
         color: var(--primary-color);
         position: absolute;
-        right: 0; /* Keep it on the left */
+        right: 0; /* Align to the left of the dot */
         top: 50%; /* Vertically align */
         margin-right: 60%;
         transform: translateY(-50%);
     }
-    
-    /* Styling for the dot */
-    .timeline-dot {
+
+    /* Current job dot and color */
+    .timeline-date-current {
+        color: var(--neon-orange);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+        padding: 10px 20px;
+    }
+
+    /* Styling for the dots */
+    .timeline-dot, .timeline-dot-current {
         width: 15px;
         height: 15px;
         background-color: var(--primary-color);
         border-radius: 50%;
         position: absolute;
-        left: 50%; /* Horizontally center */
-        transform: translateX(-50%); /* Adjust for dot width */
-    }
-    
-    /* Content on the right side */
-    .timeline-content {
-        flex: 1;
-        padding: 10px 20px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-        text-align: left;
-        margin-left: 60%; /* Space from the dot */
+        left: 50%; /* Center horizontally */
+        transform: translateX(-50%);
+        z-index: 1; /* Ensure the dots are above the lines */
     }
 
-    /* Current job */
-    .timeline-date-current {
-        text-align: right;
-        padding-right: 10px;
-        font-weight: bold;
-        position: absolute;
-        right: 0; /* Keep it on the left */
-        top: 50%; /* Vertically align */
-        margin-right: 60%;
-        transform: translateY(-50%);
-        color: var(--neon-orange);
-        text-shadow: 0 0 5px var(--neon-orange);
-        /* box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange); */
-    }
-    
-    /* Styling for the dot */
+    /* Current job dot and color */
     .timeline-dot-current {
-        width: 15px;
-        height: 15px;
         background-color: var(--neon-orange);
-        border-radius: 50%;
-        position: absolute;
-        left: 50%; /* Horizontally center */
-        transform: translateX(-50%); /* Adjust for dot width */
-        text-shadow: 0 0 5px var(--neon-orange);
-        /* transform: scale(1.05); */
-        /* box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange); */
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange), 0 0 20px var(--neon-orange);
     }
-    
+
     /* Content on the right side */
-    .timeline-content-current {
+    .timeline-content, .timeline-content-current {
         flex: 1;
         padding: 10px 20px;
+        text-align: left;
+        margin-left: 60%; /* Space from the dot */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Current job content */
+    .timeline-content-current {
         color: var(--neon-orange);
-        text-shadow: 0 0 5px var(--neon-orange);
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-        text-align: left;
-        margin-left: 60%; /* Space from the dot */
         box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
     }
-    
-  
 
-  
+    /* Timeline link styling */
+    .timeline-content a,
+    .timeline-content-current a {
+        color: gray; /* Set color to primary */
+        text-decoration: none; /* Remove underline */
+    }
+
+    /* Optional: Change color on hover */
+    .timeline-content a:hover,
+    .timeline-content-current a:hover {
+        color: var(--neon-orange); /* Set hover color, or choose another */
+        text-decoration: underline; /* Add underline on hover if you like */
+    }
+
+    @media (max-width: 768px) {
+        .timeline-content h3,
+        .timeline-content-current h3,
+        .timeline-date,
+        .timeline-date-current {
+            font-size: 0.8em; /* Adjust the font size as needed */
+        }
+        .timeline-content a,
+        .timeline-content-current a{
+            font-size: 0.5em;
+        }
+        .timeline{
+            max-width: 80%;
+        }
+    }
+    
+    @media(max-width: 400px){
+        .timeline{
+            max-width: 95%;
+        }
+    }
+
 /* Project Section */
 .project {
     padding: 60px 20px;
@@ -607,12 +659,6 @@ scroll-margin-top: 100px;
         width: 100%;
         height: auto;
         border-radius: 10px;
-    }
-
-    /* Active link styling */
-    .nav-links a.active {
-        border-bottom: 2px solid var(--neon-orange);
-        font-weight: bold;
     }
 
 
