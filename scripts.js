@@ -72,6 +72,13 @@ function setActiveLink() {
       homeLink.classList.add("active");
     }
   }
+
+  if (!isActiveSet) {
+    const homeLink = document.querySelector('.nav-links a[href="#project"]');
+    if (homeLink) {
+      homeLink.classList.add("active");
+    }
+  }
 }
 
 // Function to observe sections and update active links on scroll
@@ -81,7 +88,7 @@ function observeSections() {
 
   const observerOptions = {
     root: null, // Use the viewport as the root
-    threshold: 0.2 // Trigger when 60% of the section is in view
+    threshold: 0.6 // Trigger when 60% of the section is in view
   };
 
   const observer = new IntersectionObserver((entries) => {
