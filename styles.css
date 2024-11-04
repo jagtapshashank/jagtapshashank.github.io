@@ -10,6 +10,7 @@
     --primary-color:black;
     --secondary-color:#E6E6E6;
     --neon-orange: #ffb347;
+    --light-neon-orange: #ffc175;
 }
 
 /* Color theme */
@@ -18,6 +19,7 @@
     --secondary-color:black;
     --neon-orange: #ffb347;
     --conditional-color: rgba(255, 255, 255, 0.1);
+    --light-neon-orange: #ffc175;
 }
 .neon-orange {
   color: var(--neon-orange);
@@ -351,7 +353,7 @@ border: 1px solid rgba(255, 255, 255, 0.3); /* Optional border */
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 margin-top: 10px; /* Space between heading and box */
 line-height: 1.6; /* Improve readability */
-max-width: 550px; /* Optional: limit width */
+max-width: 700px; /* Optional: limit width */
 margin-left: auto;
 margin-right: auto;
 color: var(--primary-color); /* Adjust text color to match theme */
@@ -367,11 +369,21 @@ scroll-margin-top: 100px;
         cursor: default;
         transform: scale(1.03);
     }
+
+    @media (max-width: 768px) {
+       .about p{
+            font-size: 0.8em; /* Adjust the font size as needed */
+        }
+    }
     
-    /* Optional: Improve paragraph spacing */
-    .info-box p {
-    margin: 0;
-    text-align: justify;
+    .about a{
+        color: var(--light-neon-orange); 
+        text-decoration: none;
+        text-shadow: 0 0 15px var(--neon-orange);;
+    }
+
+    .about p{
+        text-align: justify;
     }
 
 /* Technical Skills Section */
@@ -634,11 +646,22 @@ scroll-margin-top: 100px;
 
 /* Project Section */
 .project {
-    padding: 60px 20px;
+    /* padding: 60px 20px;
     text-align: center;
     color: var(--primary-color);
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color); */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+    transition: filter 0.3s ease; /* Smooth blur effect */
 }
+    .project h2{
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
 
     .gallery {
         display: flex;
@@ -648,19 +671,155 @@ scroll-margin-top: 100px;
     }
 
     .card {
-        width: 300px;
-        background-color: var(--secondary-color);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
+        background-color: var(--conditional-color);
+        color: var(--secondary-color);
+        padding: 2.5rem;
+        border-radius: 15px;
+        max-width: 400px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: default;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        max-height: fit-content;
+    }
+
+    .card hr {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.3); /* Adjust color for visibility */
+        width: 100%; /* Full width of the card */
+        opacity: 0.8; /* Slight transparency */
+        margin: 0.5rem 0.5; /* Adjust spacing above and below */
+    }
+
+    @media(max-width: 750px){
+        .project{
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+    }
+
+    @media(max-width: 515px){
+        .project-links{
+            max-width: 100%;
+            width: 200px; /* Set a fixed width */
+            margin: 0 0; /* Center align the element */
+        }
+        .project-icon-image{
+            padding: 0em;
+        }
+        .card{
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .card p{
+            font-size: 0.6rem;
+        }
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
+    }
+
+    .card:hover h3{
+        color: var(--neon-orange);
+        transform: scale(1.05);
+     }
+ 
+    .card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        height: 50px;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .card p{
+        color: var(--primary-color);
+        font-size: 0.8em;
+        text-align: justify;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card img {
         width: 100%;
         height: auto;
         border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
+    .project-links {
+        display: flex;
+        justify-content: center; /* Center align the links horizontally */
+        align-items: center; /* Center align the links vertically */
+        max-width: 40%;
+        max-height: 5%;
+        background-color: var(--conditional-color);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .project-icon-image{
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding: 1em;
+        transition: background-color 0.3s, transform 0.3s;
+        position: relative;
+        display: inline-block;
+    }
+
+    .project-icon-image:after {
+        content: attr(data-name); /* Get content from data-name attribute */
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.3);
+        color: var(--primary-color);
+        padding: 5px 8px;
+        border-radius: 8px;
+        font-size: 0.6rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        white-space: nowrap;
+        pointer-events: none; /* Ensure tooltip doesn't block interactions */
+    }
+    
+     /* Show tooltip on hover */
+     .project-icon-image:hover::after {
+        visibility: visible;
+        opacity: 1;
+        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange); /* Neon glow effect */
+    }   
+
+    .project-icon-image img{
+        width: auto;
+        height: auto;
+    }
+
+    .project-icon {
+        cursor: pointer;
+        min-width: 20px;
+        min-height: 20px;
+        max-width: 24px;
+        max-height: 24px;
+    }
+
+    .project-icon:hover{
+    transform: scale(1.1); /* Slightly scale up the icon on hover */   
+    }
 
 /* Footer */
 .footer {
