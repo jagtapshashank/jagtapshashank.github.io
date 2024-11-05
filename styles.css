@@ -644,6 +644,108 @@ scroll-margin-top: 100px;
         }
     }
 
+/* Education Section Styling */
+.education {
+    padding: 2rem;
+    scroll-margin-top: 100px;
+    max-width: 66.66%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: var(--primary-color);
+    position: relative;
+    cursor: default;
+}
+
+    .education h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .education-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem; /* Spacing between items */
+        justify-content: center;
+    }
+
+    .school-logo {
+        margin-right: 2em;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid var(--neon-orange);
+    }
+
+    .school-info {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+    }
+
+    .row {
+        display: flex;
+        width: 100%;
+        justify-content: space-between; /* Space between elements in each row */
+    }
+
+    .school-name, .school-major {
+        flex: 1;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .school-major {
+        font-style: italic;
+    }
+
+    .school-major a {
+        text-decoration: none;
+        color: var(--neon-orange);
+        text-shadow: 0 0 5px var(--neon-orange);
+    }
+
+    .graduation-year {
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+    }
+
+    @media(max-width: 768px){
+        .school-logo{
+            width: 20%;
+            height: auto;
+        }
+    }
+
+    @media(max-width: 585px){
+        .school-name p{
+            font-size: 0.9em; 
+        }
+        .school-major a{
+            font-size: 0.9em; 
+        }
+        .graduation-year p{
+            font-size: 0.9em; 
+        }
+        .graduation-year{
+            font-size: 0.9em; 
+        }
+    }
+
+    @media(max-width: 430px){
+        .school-logo{
+            margin-right: 1rem;
+        }
+    }
+
+    @media(max-width: 500px){
+        .education{
+            max-width: 100%;
+        }
+    }
+
 /* Project Section */
 .project {
     /* padding: 60px 20px;
