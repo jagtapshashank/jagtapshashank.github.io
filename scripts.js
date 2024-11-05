@@ -74,9 +74,9 @@ function setActiveLink() {
   }
 
   if (!isActiveSet) {
-    const homeLink = document.querySelector('.nav-links a[href="#project"]');
-    if (homeLink) {
-      homeLink.classList.add("active");
+    const projectLink = document.querySelector('.nav-links a[href="#project"]');
+    if (projectLink) {
+      projectLink.classList.add("active");
     }
   }
 }
@@ -88,7 +88,7 @@ function observeSections() {
 
   const observerOptions = {
     root: null, // Use the viewport as the root
-    threshold: 0.6 // Trigger when 60% of the section is in view
+    threshold: 0.5 // Trigger when 60% of the section is in view
   };
 
   const observer = new IntersectionObserver((entries) => {
@@ -99,6 +99,16 @@ function observeSections() {
         if (entry.target.id === 'about') {
           // If About section is in view, keep 'Home' underlined
           homeLink.classList.add('active');
+        }else{
+          navLinks.forEach(link => link.classList.remove('active'));
+          link.classList.add('active');
+        }
+      }
+
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'education') {
+          // If About section is in view, keep 'Home' underlined
+          experienceLink.classList.add('active');
         }else{
           navLinks.forEach(link => link.classList.remove('active'));
           link.classList.add('active');
@@ -121,6 +131,28 @@ function updateTimelineContent() {
   const timelineDates = document.querySelectorAll(
       '.timeline-date, .timeline-date-current'
   );
+  const schoolmajor = document.querySelectorAll(
+      '.school-major a'
+  );
+  const schoolname = document.querySelectorAll(
+      '.school-name p'
+  );
+
+  schoolmajor.forEach(p => {
+    if (window.innerWidth <= 990) {
+        p.textContent = p.getAttribute('data-small');
+    } else {
+        p.textContent = p.getAttribute('data-full');
+    }
+  });
+
+  schoolname.forEach(p => {
+    if (window.innerWidth <= 690) {
+        p.textContent = p.getAttribute('data-small');
+    } else {
+        p.textContent = p.getAttribute('data-full');
+    }
+  });
 
   timelineDates.forEach(date => {
     if (window.innerWidth <= 768) {
@@ -145,6 +177,7 @@ function updateTimelineContent() {
           p.textContent = p.getAttribute('data-full');
       }
   });
+
 }
 
 // Run on window resize and page load
