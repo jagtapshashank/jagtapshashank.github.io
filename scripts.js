@@ -105,15 +105,15 @@ function observeSections() {
         }
       }
 
-      if (entry.isIntersecting) {
-        if (entry.target.id === 'education') {
-          // If About section is in view, keep 'Home' underlined
-          experienceLink.classList.add('active');
-        }else{
-          navLinks.forEach(link => link.classList.remove('active'));
-          link.classList.add('active');
-        }
-      }
+      // if (entry.isIntersecting) {
+      //   if (entry.target.id === 'education') {
+      //     // If About section is in view, keep 'Home' underlined
+      //     experienceLink.classList.add('active');
+      //   }else{
+      //     navLinks.forEach(link => link.classList.remove('active'));
+      //     link.classList.add('active');
+      //   }
+      // }
     });
   }, observerOptions);
 
