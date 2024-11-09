@@ -11,6 +11,7 @@
     --secondary-color:#E6E6E6;
     --neon-orange: #ffb347;
     --light-neon-orange: #ffc175;
+    --dark-neon-orange: #e69934;
 }
 
 /* Color theme */
@@ -20,6 +21,7 @@
     --neon-orange: #ffb347;
     --conditional-color: rgba(255, 255, 255, 0.1);
     --light-neon-orange: #ffc175;
+    --dark-neon-orange: #e69934;
 }
 .neon-orange {
   color: var(--neon-orange);
@@ -377,9 +379,10 @@ scroll-margin-top: 100px;
     }
     
     .about a{
-        color: var(--light-neon-orange); 
+        color: var(--neon-orange);
+        text-shadow: 0 0 5px var(--neon-orange);
         text-decoration: none;
-        text-shadow: 0 0 15px var(--neon-orange);;
+        font-style: italic;
     }
 
     .about p{
