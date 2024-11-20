@@ -10,7 +10,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Apply theme on page load based on localStorage value
 document.addEventListener("DOMContentLoaded", () => {
-  const storedTheme = localStorage.getItem("theme") || "light";
+  const storedTheme = localStorage.getItem("theme") || "dark";
   applyTheme(storedTheme);
 
   setActiveLink(); // Set the active link based on the current URL or section

@@ -25,7 +25,6 @@
 }
 .neon-orange {
   color: var(--neon-orange);
-  text-shadow: 0 0 5px var(--neon-orange);
 }
 
 html, body {
@@ -219,11 +218,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     min-height: 100vh;
     padding-top: 30px; /* Offset content to avoid overlap with navbar */
     transition: filter 0.3s ease; /* Smooth blur effect */
-}
-
-/* Blur effect */
-.blurred {
-    filter: blur(5px); /* Apply blur when class is active */
+    cursor: default;
 }
 
 /* Home Section */
@@ -362,9 +357,6 @@ color: var(--primary-color); /* Adjust text color to match theme */
 transition: transform 0.3s, box-shadow 0.3s;
 scroll-margin-top: 100px;
 }
-    .about h2{
-        text-shadow: 0 0 15px var(--neon-orange);
-    }
 
     .about:hover{
         box-shadow: 0 0 10px var(--neon-orange), 0 0 25px var(--neon-orange); /* Neon glow effect */
@@ -380,9 +372,10 @@ scroll-margin-top: 100px;
     
     .about a{
         color: var(--neon-orange);
-        text-shadow: 0 0 5px var(--neon-orange);
+        /* text-shadow: 0 0 5px var(--neon-orange); */
         text-decoration: none;
         font-style: italic;
+        font-weight: bold;
     }
 
     .about p{
@@ -400,7 +393,7 @@ scroll-margin-top: 100px;
     /* Prevent line breaks within the span */
     .heading-content {
         white-space: nowrap; 
-        text-shadow: 0 0 15px var(--neon-orange);
+        /* text-shadow: 0 0 15px var(--neon-orange); */
     }
 
     /* Heading styling */
@@ -509,7 +502,7 @@ scroll-margin-top: 100px;
     /* Prevent line breaks within the span */
     .heading-content {
         white-space: nowrap; 
-        text-shadow: 0 0 15px var(--neon-orange);
+        /* text-shadow: 0 0 15px var(--neon-orange); */
     }
 
     .timeline h2{
@@ -571,7 +564,7 @@ scroll-margin-top: 100px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange);
         padding: 10px 20px;
     }
 
@@ -608,7 +601,7 @@ scroll-margin-top: 100px;
         background-color: rgba(255, 255, 255, 0.1);
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange);
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange);
     }
 
     /* Timeline link styling */
@@ -622,7 +615,6 @@ scroll-margin-top: 100px;
     .timeline-content a:hover,
     .timeline-content-current a:hover {
         color: var(--neon-orange); /* Set hover color, or choose another */
-        text-decoration: underline; /* Add underline on hover if you like */
     }
 
     @media (max-width: 768px) {
@@ -706,7 +698,7 @@ scroll-margin-top: 100px;
     .school-major a {
         text-decoration: none;
         color: var(--neon-orange);
-        text-shadow: 0 0 5px var(--neon-orange);
+        /* text-shadow: 0 0 5px var(--neon-orange); */
     }
 
     .graduation-year {
