@@ -292,7 +292,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
         position: relative;
         display: inline-block;
         padding: 5px; /* Spacing between the image and the glow */
-        border-radius: 5%; /* Matching the image border */
+        border-radius: 50%; /* Make container circular */
         background-color: #0d0d0d; /* Dark background to enhance neon effect */
         box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
         transition: transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
