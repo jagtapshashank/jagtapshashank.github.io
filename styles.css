@@ -302,7 +302,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     .personal-pic {
         cursor: auto;
         width: 99%;  /* Width as a percentage of its container */
-        max-width: 350px; /* Limit maximum width */
+        max-width: 425px; /* Limit maximum width */
         height: auto; /* Maintain aspect ratio */
         border-radius: 5%; /* Consistent rounded borders */
         object-fit: cover; /* Ensure the image fits nicely */
