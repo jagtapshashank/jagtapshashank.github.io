@@ -413,7 +413,7 @@ scroll-margin-top: 100px;
 
     /* Skill boxes */
     .skill-box {
-        background-color: var(--conditional-color);
+        background-color: rgba(255, 255, 255, 0.2);
         color: var(--secondary-color);
         padding: 1rem;
         border-radius: 15px;
@@ -483,6 +483,8 @@ scroll-margin-top: 100px;
 
     /* Adjust image spacing */
     .img-container img {
+        height: 50px;
+        width: 50px;
         padding: 5px;
     }
 
@@ -857,7 +859,7 @@ scroll-margin-top: 100px;
         display: flex;
         justify-content: center; /* Center align the links horizontally */
         align-items: center; /* Center align the links vertically */
-        max-width: 40%;
+        max-width: 50%;
         max-height: 5%;
         background-color: var(--conditional-color);
         border-radius: 10px;
@@ -882,7 +884,7 @@ scroll-margin-top: 100px;
         bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        background-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(0, 0, 0, 0.2);
         color: var(--primary-color);
         padding: 5px 8px;
         border-radius: 8px;
@@ -917,6 +919,42 @@ scroll-margin-top: 100px;
     .project-icon:hover{
     transform: scale(1.1); /* Slightly scale up the icon on hover */   
     }
+    
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 8px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+    }
+    
+    .tech-item img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .tech-item span {
+        font-size: 0.75rem;
+        color: var(--primary-color);
+    }
+    
+    .tech-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 10px var(--neon-orange);
+    }
+    
 
 /* Footer */
 .footer {
