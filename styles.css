@@ -111,7 +111,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     /* font-weight: bold; */
     }
 
-    @media(max-width:650px){
+    @media(max-width:870px){
     .nav-links{
         /* display: none; */
         flex-direction: column;
@@ -640,6 +640,100 @@ scroll-margin-top: 100px;
             max-width: 95%;
         }
     }
+
+/* Recommendations Section Styling */
+.recommendations-section {
+    padding: 2rem;
+    background: var(--secondary-color); /* Dark background */
+    color: var(--primary-color);
+    text-align: center;
+    }
+      
+      .recommendations-section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+      }
+      
+      .testimonial-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+      
+      .testimonial-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        text-align: left;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: default;
+        height: max-content;
+      }
+
+      .testimonial-card:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
+      }
+      
+      .testimonial-card p {
+        font-size: 15px;
+        font-style: italic;
+        color: gray;
+      }
+
+      .testimonial-card:hover p{
+        color: var(--dark-neon-orange);
+      }
+      
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+      }
+      
+      .rec-img {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-right: 15px;
+        background-color: #0d0d0d; /* Dark background to enhance neon effect */
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
+      }
+
+      .rec-info{
+        width: 16px;
+        height: 16px;
+        vertical-align: top;
+      }
+
+      /* LinkedIn icon style */
+        .linkedin-icon-rec {
+            width: 18px;
+            height: 18px;
+            vertical-align: middle;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        
+        .linkedin-icon-link-rec:hover .linkedin-icon-rec {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 4px var(--neon-orange));
+        }
+      .testimonial-author h4 {
+        margin: 0;
+        color: var(--primary-color);
+      }
+      
+      .testimonial-author p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--dark-neon-orange);
+      } 
+
 
 /* Education Section Styling */
 .education {
