@@ -39,7 +39,7 @@ html, body {
 .main-container{
     max-width: 1200px; /* Set your desired maximum width */
     margin: 0 auto; /* Center the container */
-    padding: 20px; /* Optional: Add some padding inside the container */
+    padding: 40px; /* Optional: Add some padding inside the container */
 }
 
 /* Line */
@@ -47,171 +47,243 @@ hr {
     border: none; /* Remove default border */
     height: 1px; /* Set the height of the line */
     background-color: var(--primary-color); /* Set the desired color */
-    margin: 20px 0; /* Add some vertical spacing around the line */
+    margin: 15px 0; 
 }
 
 
 /* Navbar */
-.navbar {
-position: fixed;
-background-color: var(--secondary-color);
-color: var(--primary-color);
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 1rem 2rem;
-width: 100%;
-top: 0;
-left: 0;
-z-index: 10;
-backdrop-filter: blur(100%);
-transition: transform 0.3s ease; /* Smooth transition for moving */
-}
+/* .navbar {
+    position: fixed;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: blur(100%);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid #fff1; /* subtle border as in screenshot */
+  /* } */ 
+  .navbar {
+    position: fixed;
+    background-color: transparent; /* or transparent */
+    color: var(--primary-color);
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    /* backdrop-filter: blur(3px); */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    transition: transform 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 
-#sidebar-active{
-    display: none;
-}
-
-.open-sidebar-button, .close-sidebar-button{
-    display: none;
-}
-
-    /* Navigation links */
-    .nav-links {
-    margin-right: auto;
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    }
-
-    /* Container for navigation links and social icons */
-    .nav-content {
+  .nav-content {
     display: flex;
     align-items: center;
-    gap: 30px;
-    flex-direction: row;
-    }
-
-    /* Styling for each link */
-    .nav-links li a {
+    justify-content: space-between; 
+    width: 100%;
+    padding: 1rem 3rem;
+    box-sizing: border-box;
+  }
+  
+  .nav-center-container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    background-color: var(--conditional-color);
+    border-radius: 10px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    align-items: center;
+    list-style: none;
+  }
+  
+  .nav-links li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links li a {
     color: var(--primary-color);
     text-decoration: none;
-    font-size: 1.1rem;
-    }
-
-    .nav-links li:hover{
-    transform: scale(1.05);
-    }
-
-    /* Active link styling */
-    .nav-links a.active {
-    /* border-bottom: 2px solid var(--neon-orange); */
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 2px 5px;
+    transition: color 0.2s, text-shadow 0.2s;
+  }
+  
+  .nav-links li a.active {
     color: var(--neon-orange);
     text-shadow: 0 0 15px var(--neon-orange);
-    /* font-weight: bold; */
-    }
-
-    @media(max-width:870px){
-    .nav-links{
-        /* display: none; */
-        flex-direction: column;
-        align-items: flex-start;
-        position: fixed;
-        top: 0;
-        left: -100%;
-        z-index: 10;
-        width: 70%;
-        height: 100%;
-        background-color: var(--secondary-color);
-        box-shadow: 10px 0 15px rgba(255, 255, 255, 0.3);
-        transition: 0.75s ease-out;
-    }
-    nav a{
-        box-sizing: border-box;
-        height: auto;
-        width: 100%;
-        padding: 20px 30px;
-        justify-content: flex-start;
-    }
-
-    .open-sidebar-button, .close-sidebar-button{
-        display: block;
-    }
-
-    #sidebar-active:checked ~ .nav-links{
-        left: 0;
-    }
-    #sidebar-active:checked ~ #overlay{
-        height: 100%;
-        width:100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 9;
-    }
-    }
-
-    /* Social icons */
-    .social-icons {
+  }
+  
+  .nav-links li a:hover {
+    color: var(--neon-orange);
+    text-shadow: 0 0 10px var(--neon-orange);
+  }
+  
+  .social-icons {
     display: flex;
+    max-width: 120px;
     gap: 10px;
-    padding: 2px; /* Add some padding around the icon */
-    background-color: var(--conditional-color); /* Light background color */
-    border-radius: 10px; /* Make the corners rounded */
+    padding: 2px;
+    background-color: var(--conditional-color);
+    border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
-    }
+    transition: background-color 0.3s, transform 0.3s;
+  }
 
-    .social-icons:hover {
-    transform: scale(1.01); /* Slightly scale up the icon on hover */
-    }
+  .signature-text {
+    font-family: 'Great Vibes', cursive;
+    min-width: 116px;
+    font-size: 1.8rem;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange), 0 0 8px var(--light-neon-orange);
+    white-space: nowrap;
+    user-select: none;
+    padding: 4px 10px;
+    cursor: default;
+    text-decoration: none;
+    text-align: center;
+  }
+  /* .signature-text:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  } */
 
-    /* Image container to handle tooltips */
-    .social-icons-image {
-        position: relative;
-        display: inline-block;
-        margin: 2px;/* ----- */
-        cursor: pointer;
-    }
-
-    /* Tooltip styling */
-    .social-icons-image::after {
-        content: attr(data-name); /* Get content from data-name attribute */
-        /* content: "shashank"; */
-        position: absolute;
-        bottom: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: var(--conditional-color);
-        color: var(--primary-color);
-        padding: 5px 8px;
-        border-radius: 8px;
-        font-size: 0.6rem;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        white-space: nowrap;
-        pointer-events: none; /* Ensure tooltip doesn't block interactions */
-    }
-
-    /* Show tooltip on hover */
-    .social-icons-image:hover::after {
-        visibility: visible;
-        opacity: 1;
-        box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange); /* Neon glow effect */
-    }
-
-    /* Styling for icons */
-    .icon {
+  
+  .social-icons:hover {
+    transform: scale(1.01);
+  }
+  
+  .social-icons-image {
+    position: relative;
+    display: inline-block;
+    margin: 2px;
+    cursor: pointer;
+  }
+  
+  .social-icons-image::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--conditional-color);
+    color: var(--primary-color);
+    padding: 5px 8px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  
+  .social-icons-image:hover::after {
+    visibility: visible;
+    opacity: 1;
+    box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange);
+  }
+  
+  .icon {
     width: 26px;
     height: 26px;
     cursor: pointer;
-    }
+    transition: transform 0.2s;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+  }
 
-    .icon:hover{
-    transform: scale(1.1); /* Slightly scale up the icon on hover */   
+  /* Always visually hide the checkbox */
+  #sidebar-active {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Hide hamburger and close icons by default (desktop) */
+  .open-sidebar-button,
+  .close-sidebar-button {
+    display: none;
+  }
+  
+  @media (max-width: 1130px) {
+    .nav-links li a{
+        font-size: 0.7rem;
     }
+  }
+  /* Show hamburger and close icons only on small screens */
+  @media (max-width: 1000px) {
+    .open-sidebar-button,
+    .close-sidebar-button {
+      display: block;
+      cursor: pointer;
+    }
+    .nav-links li a{
+        font-size: 1rem;
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1000px) {
+    .nav-content {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      padding: 1rem;
+    }
+  
+    .nav-center-container {
+      justify-content: flex-start;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      position: fixed;
+      top: 0;
+      left: -90%;
+      z-index: 10;
+      width: 70%;
+      height: 100svh;
+      background-color: var(--secondary-color);
+      box-shadow: 10px 0 15px rgba(255, 255, 255, 0.3);
+      transition: 0.75s ease-out;
+      padding: 40px 20px;
+      border-radius: 0 16px 16px 0;
+    }
+  
+    .open-sidebar-button, .close-sidebar-button {
+      display: block;
+    }
+  
+    #sidebar-active:checked ~ .nav-center-container .nav-links {
+      left: 0;
+    }
+    #sidebar-active:checked ~ #overlay {
+      height: 100%;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9;
+    }
+  }
 
 /* Content section styling */
 #main-content {
@@ -291,7 +363,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     .image-container {
         position: relative;
         display: inline-block;
-        padding: 5px; /* Spacing between the image and the glow */
+        padding: 3px; /* Spacing between the image and the glow */
         border-radius: 50%; /* Make container circular */
         background-color: #0d0d0d; /* Dark background to enhance neon effect */
         box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
@@ -301,7 +373,7 @@ transition: transform 0.3s ease; /* Smooth transition for moving */
     /* Image Styling - Responsive */
     .personal-pic {
         cursor: auto;
-        width: 99%;  /* Width as a percentage of its container */
+        width: 100%;  /* Width as a percentage of its container */
         max-width: 425px; /* Limit maximum width */
         height: auto; /* Maintain aspect ratio */
         border-radius: 5%; /* Consistent rounded borders */
@@ -525,6 +597,7 @@ scroll-margin-top: 100px;
         display: flex;
         align-items: center;
         margin: 0 0;
+        padding-top: 1rem;
     }
 
     /* Connecting vertical line between dots */
@@ -549,8 +622,7 @@ scroll-margin-top: 100px;
 
     /* Styling for the left-side date */
     .timeline-date, .timeline-date-current {
-        text-align: right;
-        padding-right: 10px;
+        text-align: center;
         font-weight: bold;
         color: var(--primary-color);
         position: absolute;
@@ -558,6 +630,13 @@ scroll-margin-top: 100px;
         top: 50%; /* Vertically align */
         margin-right: 60%;
         transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+        border-radius: 15px;
+        width: 250px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     /* Current job dot and color */
@@ -589,35 +668,106 @@ scroll-margin-top: 100px;
     }
 
     /* Content on the right side */
-    .timeline-content, .timeline-content-current {
+    .timeline-content {
         flex: 1;
         padding: 10px 20px;
         text-align: left;
         margin-left: 60%; /* Space from the dot */
         transition: transform 0.3s ease-in-out;
-    }
-
-    /* Current job content */
-    .timeline-content-current {
-        color: var(--neon-orange);
         background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        padding: 1rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange);
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     /* Timeline link styling */
-    .timeline-content a,
-    .timeline-content-current a {
+    .timeline-content a , 
+    .timeline-content p{
         color: gray; /* Set color to primary */
         text-decoration: none; /* Remove underline */
     }
 
-    /* Optional: Change color on hover */
-    .timeline-content a:hover,
-    .timeline-content-current a:hover {
-        color: var(--neon-orange); /* Set hover color, or choose another */
+    .timeline-content p{
+        text-align: right;
+        font-size: 0.8rem;
     }
+    .timeline-content a:hover ,
+    .timeline-content p:hover {
+        color: var(--neon-orange);
+        cursor: pointer;
+    }
+    .timeline-content:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange); /* Neon glow effect */
+    }
+    .timeline-content:hover h3{
+        color: var(--neon-orange);
+    }
+
+    .details {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+
+    .details ul li b{
+        color: var(--neon-orange);
+    }
+
+    @keyframes floatUpDown {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      
+      p.details-popup {
+        display: flex;
+        justify-content: flex-end; 
+        align-items: center; 
+        animation: floatUpDown 1.5s ease-in-out infinite;
+        color: var(--neon-orange);
+        font-weight: bold;
+      }
+      
+    .timeline-item.expanded .details {
+        max-height: 500px; 
+        opacity: 1;
+    }
+
+    /* List Styling in Timeline Details */
+    .timeline-content .details ul{
+    list-style: none;
+    padding-left: 0.25rem;
+    margin-top: 0.5rem;
+    }
+
+    .timeline-content .details li{
+    position: relative;
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: gray; /* Will adapt to dark/light themes */
+    }
+
+    /* Custom bullet point */
+    .timeline-content .details li::before{
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1rem;
+    top: 0;
+    line-height: 1.5;
+    }
+
 
     @media (max-width: 768px) {
         .timeline-content h3,
@@ -1048,6 +1198,36 @@ scroll-margin-top: 100px;
         transform: scale(1.05);
         box-shadow: 0 0 10px var(--neon-orange);
     }
+
+    .filter-buttons {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+      }
+      
+      .filter-btn {
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: var(--primary-color);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+      
+      .filter-btn:hover,
+      .filter-btn.active {
+        background-color: var(--neon-orange);
+        color: black;
+        transform: scale(1.05);
+      }
     
 
 /* Footer */
@@ -1056,4 +1236,15 @@ scroll-margin-top: 100px;
     color: var(--primary-color);
     text-align: center;
     padding: 10px;
+    font-size: 1rem;
 }
+    @media (max-width: 768px) {
+        .footer{
+        font-size: 0.8rem;
+        }   
+    }
+    @media (max-width: 375px) {
+        .footer{
+            font-size: 0.6rem;
+        }  
+    }

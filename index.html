@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shashank Jagtap - Portfolio</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="styles.css">
   <script defer src="scripts.js"></script>
 </head>
@@ -11,52 +12,62 @@
     <div class="main-container">
         <!-- Navbar -->
         <header class="navbar">
-            <h1>
-                <nav class="nav-content">
-                    <input type="checkbox" id="sidebar-active">
-                    <label for="sidebar-active" class="open-sidebar-button"><img id="menu_icon" src="images/menu.svg" alt="Menu Icon" width="24px" height="24px" /></label>
-                    <label id="overlay" for="sidebar-active"></label>
-                    <ul class="nav-links">
-                        <label for="sidebar-active" class="close-sidebar-button"><img id="close_icon" src="images/close.svg" alt="Close Icon" width="24px" height="24px" /></label>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#technical-skills">Skills</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#recommendations">Recommendations</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="project.html">Projects</a></li>
-                    </ul>
-                    </h1>
-                    <div class="social-icons">
-                        <div class="social-icons-image" data-name="Github Link 👨‍💻">
-                            <a href="https://github.com/jagtapshashank" target="_blank">
-                            <img src="images/githubdark.svg" alt="GitHub" class="icon">
-                            </a>
-                        </div>
-                        <div class="social-icons-image" data-name="My LinkedIn 💻">
-                            <a href="https://www.linkedin.com/in/shashankjagtap/" target="_blank">
-                            <img src="images/linkedindark.svg" alt="LinkedIn" class="icon">
-                            </a>
-                        </div>
-                        <div class="social-icons-image" data-name="Switch Theme 💡">
-                        <img src="images/moon.svg" class="icon" id="icon_theme" alt="Theme toggle">
-                        </div>
-                    </div>
-                </nav>
+            <nav class="nav-content">
+            <input type="checkbox" id="sidebar-active">
+            <label for="sidebar-active" class="open-sidebar-button">
+                <img id="menu_icon" src="images/menu.svg" alt="Menu Icon" width="24px" height="24px" />
+            </label>
+            <label id="overlay" for="sidebar-active"></label>
+            <div class="signature-text">
+                S.Jagtap
+            </div>
+    
+            <div class="nav-center-container">
+                <ul class="nav-links">
+                <label for="sidebar-active" class="close-sidebar-button">
+                    <img id="close_icon" src="images/close.svg" alt="Close Icon" width="24px" height="24px" />
+                </label>
+                <li><a href="#home" class="active">🏠 Home</a></li>
+                <li><a href="#technical-skills">💻 Skills</a></li>
+                <li><a href="#experience">📈 Experience</a></li>
+                <li><a href="#recommendations">💬 Recommendations</a></li>
+                <li><a href="#education">📚 Education</a></li>
+                <li><a href="/project/">💡 Projects</a></li>
+                </ul>
+            </div>
+            
+            <div class="social-icons">
+                <div class="social-icons-image" data-name="Github Link 👨‍💻">
+                <a href="https://github.com/jagtapshashank" target="_blank">
+                    <img src="images/githubdark.svg" alt="GitHub" class="icon">
+                </a>
+                </div>
+                <div class="social-icons-image" data-name="My LinkedIn 💻">
+                <a href="https://www.linkedin.com/in/shashankjagtap/" target="_blank">
+                    <img src="images/linkedindark.svg" alt="LinkedIn" class="icon">
+                </a>
+                </div>
+                <div class="social-icons-image" data-name="Switch Theme 💡">
+                <img src="images/moon.svg" class="icon" id="icon_theme" alt="Theme toggle">
+                </div>
+            </div>
+            </nav>
         </header>
         
         <div id ="main-content">
             <!-- Home Section -->
             <section id="home" class="home">
                 <h2>Hello, <span class="neon-orange">Shashank</span> here <span class="emoji">👋</span></h2>
-                <p>MCS Student | Data Analyst Researcher | ML Researcher</p>
+                <p>MCS Student | Software Developer | ML Researcher</p>
                 <br>
                 <br>
                 <div class="image-container">
-                    <img src="images/shashank4.png" alt="Shashankimage" class="personal-pic">
+                    <img src="images/shashank4-4-modified.png" alt="Shashankimage" class="personal-pic">
                 </div>
                 <div class="btn-container">
-                    <a href="https://drive.google.com/file/d/10TDd3HGBkVG8K16VlxCc868VUqYNrUvS/view?usp=sharing" target="_blank" class="btn">View Resume</a>
-                    <a href="project.html" class="btn">Checkout my Projects</a>
+                    <a href="https://drive.google.com/file/d/1RWsj91KKNzUxNKuNBiFxOhsBJZeVX-XZ/view?usp=sharing" target="_blank" class="btn">💻 SDE Resume</a>
+                    <a href="project.html" class="btn">🚀 Checkout my Projects</a>
+                    <a href="https://drive.google.com/file/d/1dQranTVuP95PrnR7YtOnr_EU5KKoz1KU/view?usp=sharing" target="_blank" class="btn">🤖 ML Resume</a>
                 </div>
             </section>
             
@@ -268,15 +279,28 @@
             
                 <div class="timeline-container">
                     <div class="timeline-item">
-                        <div class="timeline-date-current" data-small="Aug 2024 - May 2025" data-full="August 2024 - May 2025">August 2024 - May 2025</div>
-                        <div class="timeline-dot-current"></div>
-                        <div class="timeline-content-current">
+                        <div class="timeline-date" data-small="Aug 2024 - May 2025" data-full="August 2024 - May 2025">August 2024 - May 2025</div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
                             <h3 data-small="Research Assistant-DA @" data-full="Research Assistant-Data Analytics @">
                                 Research Assistant-Data Analytics @
                             </h3>
-                            <a href="https://mays.tamu.edu/departments/information-and-operations-management/" target="_blank" data-small="ISTM, TAMU" data-full="Info & Operations Management , Texas A&M">
-                                Info & Operations Management , Texas A&M
+                            <a href="https://mays.tamu.edu/departments/information-and-operations-management/" target="_blank" data-small="ISTM, TAMU" data-full="Info & Operations Management, Texas A&M">
+                                Info & Operations Management, Texas A&M
                             </a>
+                            <br>
+                            <br>
+                            <p class="details-popup">Details 👇🏻</p>
+                            <div class="details">
+                                <hr>
+                                <ul>
+                                    <li>Achieved scalable data foundation for prescriptive healthcare analysis by cleaning and integrating <b>46M+</b> patient
+                                        records with 300+ attributes using SSMS and SSIS, improving ETL efficiency by <b>60%</b>.</li>
+                                    <li>Leveraged AngularJS and React to engineer a referral dashboard with real-time <b>CRUD</b> improving decision speed
+                                        by <b>25%</b> and reducing query response time by <b>40%</b>.</li>
+                                    <li>Mapped inter-hospital referral patterns via graph analysis and trained <b>GNN</b>, reducing processing time by <b>30%</b>.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 
@@ -290,6 +314,18 @@
                             <a href="https://mays.tamu.edu/departments/marketing/" target="_blank" data-small="Dept. of Mktg, TAMU" data-full="Dept. of Marketing, Texas A&M">
                               Dept. of Marketing, Texas A&M
                             </a>
+                            <br>
+                            <br>
+                            <p class="details-popup">Details 👇🏻</p>
+                            <div class="details">
+                                <hr>
+                                <ul>
+                                    <li>Researched impact of dynamic versus static images on social media engagement, uncovering insights into social preferences by
+                                        <b>image classification</b>.</li>
+                                    <li>Improved social media engagement modeling by building TensorFlow image classifier with ResNet50, VGG16,
+                                        and CNNs, boosting accuracy by <b>12.4%</b> and reducing training time <b>from 6 hours to 20 minutes</b>.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 
@@ -303,6 +339,19 @@
                             <a href="https://riaadvisory.com" target="_blank" data-small="RIA Adv. LLC" data-full="RIA Advisory LLC">
                                 RIA Advisory LLC
                             </a>
+                            <br>
+                            <br>
+                            <p class="details-popup">Details 👇🏻</p>
+                            <div class="details">
+                                <hr>
+                                <ul>
+                                    <li>Designed and delivered <b>Android Application</b> that empowered <b>1.2 million</b> users to assess and manage <b>loan
+                                        repayment risk</b>, solving major data access and usability challenges.</li>
+                                    <li>Streamlined <b>RESTful APIs</b> and <b>React Native UI</b> workflows—such as upload and verification panels—boosting
+                                        backend efficiency by <b>34%</b> and reducing refresh latency by <b>45%</b>.</li>
+                                    <li>Integrated an XGBoost-based loan predictor, minimizing critical <b>false negative</b> financial decisions by <b>95%</b>.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -316,6 +365,17 @@
                             <a href="https://www.f13.tech" target="_blank" data-small="F13 Tech." data-full="F13 Technologies">
                                 F13 technologies
                             </a>
+                            <p class="details-popup">Details 👇🏻</p>
+                            <div class="details">
+                                <hr>
+                                <ul>
+                                    <li>Architected scalable cloud infrastructure using AWS EC2, Lambda, S3, and DynamoDB, leading to <b>40% increase</b>
+                                        in application performance through optimized resource allocation and service integration.</li>
+                                    <li>Improved team delivery speed by <b>30%</b> by synthesizing client requirements into clear technical tasks during
+                                        <b>cross-functional analysis</b> sessions.</li>
+                                    <li>Enabled high-availability deployments by enforcing <b>IaaS</b> best practices and <b>optimizing cloud configurations</b>.</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -456,7 +516,7 @@
         <hr>
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Shashank Jagtap. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> Shashank Jagtap. All rights reserved.</p>
     </footer>
 </body>
 </html>
