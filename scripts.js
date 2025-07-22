@@ -208,3 +208,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleLinks = document.querySelectorAll(".toggle-description");
+
+  toggleLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const paragraph = link.previousElementSibling;
+      paragraph.classList.toggle("expanded");
+      link.textContent = paragraph.classList.contains("expanded") 
+        ? "Click to show less" 
+        : "Click to show more";
+    });
+  });
+});

@@ -42,6 +42,12 @@ html, body {
     padding: 40px; /* Optional: Add some padding inside the container */
 }
 
+@media(max-width: 425px){
+    .main-container{
+        padding: 20px;
+    }
+}
+
 /* Line */
 hr {
     border: none; /* Remove default border */
@@ -408,6 +414,16 @@ hr {
     .btn:hover {
         background-color: var(--neon-orange); /* Slightly darker on hover (neon orange effect) */
     }
+
+    @media(max-width: 425px){
+        .btn{
+            padding: 5px 10px;
+            font-size: 0.6rem;
+        }
+        .btn-container{
+            gap: 5px;
+        }
+    }
     
 
 
@@ -441,12 +457,16 @@ scroll-margin-top: 100px;
             font-size: 0.8em; /* Adjust the font size as needed */
         }
     }
-    
-    .about a{
+
+    @media (max-width: 425px) {
+        .about p{
+             font-size: 0.5em; /* Adjust the font size as needed */
+         }
+     }
+
+    .about b{
         color: var(--neon-orange);
-        /* text-shadow: 0 0 5px var(--neon-orange); */
         text-decoration: none;
-        font-style: italic;
         font-weight: bold;
     }
 
@@ -564,7 +584,7 @@ scroll-margin-top: 100px;
 .timeline {
     padding: 2rem;
     scroll-margin-top: 100px;
-    max-width: 66.66%;
+    max-width: 80%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -621,7 +641,7 @@ scroll-margin-top: 100px;
     }
 
     /* Styling for the left-side date */
-    .timeline-date, .timeline-date-current {
+    .timeline-date {
         text-align: center;
         font-weight: bold;
         color: var(--primary-color);
@@ -633,13 +653,13 @@ scroll-margin-top: 100px;
         background-color: rgba(255, 255, 255, 0.2);
         padding: 1rem;
         border-radius: 15px;
-        width: 250px;
+        width: auto;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(255, 255, 255, 0.3);
         transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    /* Current job dot and color */
+    /* Current job dot and color
     .timeline-date-current {
         color: var(--neon-orange);
         background-color: rgba(255, 255, 255, 0.1);
@@ -647,10 +667,10 @@ scroll-margin-top: 100px;
         border: 1px solid rgba(255, 255, 255, 0.3);
         box-shadow: 0 0 5px var(--neon-orange), 0 0 10px var(--neon-orange);
         padding: 10px 20px;
-    }
+    } */
 
     /* Styling for the dots */
-    .timeline-dot, .timeline-dot-current {
+    .timeline-dot{
         width: 15px;
         height: 15px;
         background-color: var(--primary-color);
@@ -662,10 +682,10 @@ scroll-margin-top: 100px;
     }
 
     /* Current job dot and color */
-    .timeline-dot-current {
+    /* .timeline-dot-current {
         background-color: var(--neon-orange);
         box-shadow: 0 0 10px var(--neon-orange), 0 0 15px var(--neon-orange), 0 0 20px var(--neon-orange);
-    }
+    } */
 
     /* Content on the right side */
     .timeline-content {
@@ -726,14 +746,14 @@ scroll-margin-top: 100px;
         }
       }
       
-      p.details-popup {
+    p.details-popup {
         display: flex;
         justify-content: flex-end; 
         align-items: center; 
         animation: floatUpDown 1.5s ease-in-out infinite;
         color: var(--neon-orange);
         font-weight: bold;
-      }
+    }
       
     .timeline-item.expanded .details {
         max-height: 500px; 
@@ -753,7 +773,7 @@ scroll-margin-top: 100px;
     padding-left: 1.5rem;
     line-height: 1.6;
     font-size: 0.95rem;
-    color: gray; /* Will adapt to dark/light themes */
+    color: gray; 
     }
 
     /* Custom bullet point */
@@ -771,23 +791,48 @@ scroll-margin-top: 100px;
 
     @media (max-width: 768px) {
         .timeline-content h3,
-        .timeline-content-current h3,
-        .timeline-date,
-        .timeline-date-current {
+        .timeline-date {
             font-size: 0.8em; /* Adjust the font size as needed */
         }
-        .timeline-content a,
-        .timeline-content-current a{
+        .timeline-content a{
             font-size: 0.5em;
         }
         .timeline{
             max-width: 80%;
         }
+        .timeline-content .details li::before{
+            font-size: 0.5rem;
+        }
+        .timeline-content .details li{
+            font-size: 0.5rem;
+            padding-left: 1rem;
+        }
     }
     
-    @media(max-width: 400px){
+    @media(max-width: 425px){
         .timeline{
             max-width: 95%;
+        }
+        .timeline-content h3,
+        .timeline-date {
+            font-size: 0.5em; /* Adjust the font size as needed */
+            margin-right: 58%;
+        }
+        .timeline-content{
+            margin-left: 58%;
+        }
+        .timeline-content a{
+            font-size: 0.3em;
+        }
+        p.details-popup{
+            font-size: 0.5em;
+        }
+        .timeline-content .details li::before{
+            font-size: 0.4rem;
+        }
+        .timeline-content .details li{
+            font-size: 0.4rem;
+            padding-left: 0.5rem;
         }
     }
 
@@ -797,6 +842,7 @@ scroll-margin-top: 100px;
     background: var(--secondary-color); /* Dark background */
     color: var(--primary-color);
     text-align: center;
+    scroll-margin-top: 100px;
     }
       
       .recommendations-section h2 {
@@ -831,9 +877,15 @@ scroll-margin-top: 100px;
       }
       
       .testimonial-card p {
-        font-size: 15px;
+        font-size: 1rem;
         font-style: italic;
         color: gray;
+      }
+
+      @media(max-width: 425px){
+        .testimonial-card p{
+            font-size: 0.7rem;
+        }
       }
 
       .testimonial-card:hover p{
@@ -1228,7 +1280,34 @@ scroll-margin-top: 100px;
         color: black;
         transform: scale(1.05);
       }
-    
+
+      .description-text {
+        max-height: 4em; 
+        overflow: hidden;
+        position: relative;
+        opacity: 0.85;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        color: gray;
+      }
+      
+      .description-text.expanded {
+        max-height: 500px;
+        opacity: 1;
+      }
+      
+      .toggle-description {
+        font-size: 0.75rem;
+        color: var(--neon-orange);
+        cursor: pointer;
+        margin-top: 0.5rem;
+        display: inline-block;
+        text-align: right;
+      }
+      
+      .toggle-description:hover {
+        transform: scale(1.05); /* Slight zoom-in effect */
+        transition: 0.3s;
+      }
 
 /* Footer */
 .footer {
