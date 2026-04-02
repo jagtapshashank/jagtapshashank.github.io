@@ -1,12 +1,20 @@
 // Smooth Scroll for internal links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+    const targetSelector = this.getAttribute('href');
+    const targetElement = document.querySelector(targetSelector);
+
+    if (!targetElement) return;
+
     e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
+    targetElement.scrollIntoView({
       behavior: 'smooth'
     });
   });
 });
+
+// Track the actual section currently in view
+let currentSectionId = "home";
 
 // 👇 Set current year in footer
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,17 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedTheme = localStorage.getItem("theme") || "dark";
   applyTheme(storedTheme);
 
-  setActiveLink();         // Set the active nav link
-  observeSections();       // Observe sections for scroll-based highlighting
-  updateTimelineContent(); // Set responsive content
-  setupTimelineToggle();   // Enable timeline expand/collapse
+  setActiveLink();
+  observeSections();
+  updateTimelineContent();
+  setupTimelineToggle();
+  setupNextSectionHint();
+  updateNextHint(currentSectionId);
 });
 
 // Function to apply the correct theme based on localStorage
 function applyTheme(theme) {
   document.body.classList.toggle("darktheme", theme === "dark");
 
-  // Update icon sources based on the theme
   const icon = document.getElementById("icon_theme");
   const githubIcon = document.querySelector('.social-icons div:nth-child(1) img');
   const linkedinIcon = document.querySelector('.social-icons div:nth-child(2) img');
@@ -39,27 +48,29 @@ function applyTheme(theme) {
   const closeIcon = document.getElementById("close_icon");
 
   if (theme === "dark") {
-    githubIcon.src = "/images/github.svg";
-    linkedinIcon.src = "/images/linkedin.svg";
-    icon.src = "/images/sun.svg";
-    menuIcon.src = "/images/menu.svg";
-    closeIcon.src = "/images/close.svg";
+    if (githubIcon) githubIcon.src = "/images/github.svg";
+    if (linkedinIcon) linkedinIcon.src = "/images/linkedin.svg";
+    if (icon) icon.src = "/images/sun.svg";
+    if (menuIcon) menuIcon.src = "/images/menu.svg";
+    if (closeIcon) closeIcon.src = "/images/close.svg";
   } else {
-    githubIcon.src = "/images/githubdark.svg";
-    linkedinIcon.src = "/images/linkedindark.svg";
-    icon.src = "/images/moon.svg";
-    menuIcon.src = "/images/menu_white.svg";
-    closeIcon.src = "/images/close_white.svg";
+    if (githubIcon) githubIcon.src = "/images/githubdark.svg";
+    if (linkedinIcon) linkedinIcon.src = "/images/linkedindark.svg";
+    if (icon) icon.src = "/images/moon.svg";
+    if (menuIcon) menuIcon.src = "/images/menu_white.svg";
+    if (closeIcon) closeIcon.src = "/images/close_white.svg";
   }
 }
 
 // Toggle theme and store the preference in localStorage
 const themeIcon = document.getElementById("icon_theme");
-themeIcon.onclick = function () {
-  const newTheme = document.body.classList.contains("darktheme") ? "light" : "dark";
-  localStorage.setItem("theme", newTheme);
-  applyTheme(newTheme);
-};
+if (themeIcon) {
+  themeIcon.onclick = function () {
+    const newTheme = document.body.classList.contains("darktheme") ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
+  };
+}
 
 // Set active nav link based on URL or hash
 function setActiveLink() {
@@ -102,18 +113,71 @@ function observeSections() {
       const link = document.querySelector(`a[href="#${entry.target.id}"]`);
 
       if (entry.isIntersecting) {
+        currentSectionId = entry.target.id;
+
         if (entry.target.id === 'about') {
+          navLinks.forEach(link => link.classList.remove('active'));
           const homeLink = document.querySelector('.nav-links a[href="#home"]');
           homeLink?.classList.add('active');
         } else {
           navLinks.forEach(link => link.classList.remove('active'));
           link?.classList.add('active');
         }
+
+        updateNextHint(currentSectionId);
       }
     });
   }, observerOptions);
 
   sections.forEach(section => observer.observe(section));
+}
+
+// Fixed bottom "next section" hint
+function setupNextSectionHint() {
+  const hintLink = document.getElementById("next-section-link");
+
+  if (!hintLink) return;
+
+  hintLink.addEventListener("click", function (e) {
+    const targetSelector = this.getAttribute("href");
+    const targetElement = document.querySelector(targetSelector);
+
+    if (!targetElement) return;
+
+    e.preventDefault();
+    targetElement.scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+}
+
+// Update bottom hint based on the SAME current section used by navbar
+function updateNextHint(sectionId) {
+  const hint = document.getElementById("next-section-hint");
+  const hintLink = document.getElementById("next-section-link");
+  const hintText = document.getElementById("next-section-text");
+
+  if (!hint || !hintLink || !hintText) return;
+
+  const nextSectionMap = {
+    home: { id: "about", label: "About" },
+    about: { id: "technical-skills", label: "Technical Skills" },
+    "technical-skills": { id: "experience", label: "Experience" },
+    experience: { id: "recommendations", label: "Recommendations" },
+    recommendations: { id: "education", label: "Education" },
+    education: null
+  };
+
+  const nextSection = nextSectionMap[sectionId];
+
+  if (!nextSection) {
+    hint.classList.add("hidden");
+    return;
+  }
+
+  hintText.textContent = `Next: ${nextSection.label}`;
+  hintLink.setAttribute("href", `#${nextSection.id}`);
+  hint.classList.remove("hidden");
 }
 
 // Responsive timeline text updates
@@ -127,12 +191,8 @@ function updateTimelineContent() {
   const timelineDates = document.querySelectorAll(
     '.timeline-date, .timeline-date-current'
   );
-  const schoolmajor = document.querySelectorAll(
-    '.school-major a'
-  );
-  const schoolname = document.querySelectorAll(
-    '.school-name p'
-  );
+  const schoolmajor = document.querySelectorAll('.school-major a');
+  const schoolname = document.querySelectorAll('.school-name p');
 
   schoolmajor.forEach(p => {
     p.textContent = window.innerWidth <= 990
@@ -167,19 +227,15 @@ function updateTimelineContent() {
 
 window.addEventListener('resize', updateTimelineContent);
 
-// 👇 New Function: Toggle Timeline Details
+// Toggle Timeline Details
 function setupTimelineToggle() {
   const timelineItems = document.querySelectorAll('.timeline-item');
 
   timelineItems.forEach(item => {
     item.addEventListener('click', function (e) {
-      // Don't toggle if a link is clicked
       if (e.target.closest('a')) return;
 
-      // Toggle this item's expanded state
       this.classList.toggle("expanded");
-
-      // Optional: Only one open at a time
       timelineItems.forEach(i => i !== this && i.classList.remove('expanded'));
     });
   });
@@ -193,7 +249,6 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", () => {
       const filter = button.getAttribute("data-filter");
 
-      // Highlight the active button
       filterButtons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
 
@@ -216,8 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", () => {
       const paragraph = link.previousElementSibling;
       paragraph.classList.toggle("expanded");
-      link.textContent = paragraph.classList.contains("expanded") 
-        ? "Click to show less" 
+      link.textContent = paragraph.classList.contains("expanded")
+        ? "Click to show less"
         : "Click to show more";
     });
   });
