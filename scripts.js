@@ -160,11 +160,11 @@ function updateNextHint(sectionId) {
   if (!hint || !hintLink || !hintText) return;
 
   const nextSectionMap = {
-    home: { id: "about", label: "About" },
-    about: { id: "technical-skills", label: "Technical Skills" },
-    "technical-skills": { id: "experience", label: "Experience" },
-    experience: { id: "recommendations", label: "Recommendations" },
-    recommendations: { id: "education", label: "Education" },
+    home: { id: "about", label: "🏠 Learn more About Me" },
+    about: { id: "technical-skills", label: "💻 My Technical Skills" },
+    "technical-skills": { id: "experience", label: "📈 My Experience" },
+    experience: { id: "recommendations", label: "💬 Professional Recommendations" },
+    recommendations: { id: "education", label: "📚 My Education" },
     education: null
   };
 
@@ -175,7 +175,7 @@ function updateNextHint(sectionId) {
     return;
   }
 
-  hintText.textContent = `Next: ${nextSection.label}`;
+  hintText.textContent = `${nextSection.label}`;
   hintLink.setAttribute("href", `#${nextSection.id}`);
   hint.classList.remove("hidden");
 }
